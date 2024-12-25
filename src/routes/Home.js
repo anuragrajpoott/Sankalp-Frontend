@@ -8,7 +8,7 @@ import Footer from "../components/homepage/Footer"
 
 const Home = () => {
   return (
-    <div className='mx-5'>
+    <div>
        
        <Nav/>
 
