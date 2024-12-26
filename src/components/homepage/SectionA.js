@@ -51,18 +51,6 @@ const SectionA = () => {
               >Start <Highlight>coding in seconds</Highlight></Codeblocks>
       </div>
 
-      <div className='m-2.5'><p>Unlock the <Highlight>Power of Code</Highlight></p></div>
-
-<div className='m-2.5'><p>Learn to Build Anything You Can Imagine</p></div>
-
-<div className='flex m-2.5 w-[50%] items-center justify-evenly'>
-  <p>Free</p>
-  <p>New to Coding</p>
-  <p>Most Popular</p>
-  <p>Skills</p>
-  <p>Career</p>
-</div>
-
     </div>
   )
 }

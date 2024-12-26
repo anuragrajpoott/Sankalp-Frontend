@@ -1,3 +1,50 @@
+export const FooterLink1 = [
+   {
+    title:"Campany",
+    links:[
+      { title: "About", link: "/about"},
+      { title: "About", link: "/about"},
+      { title: "About", link: "/about"}
+    ]
+   },
+   {
+    title:"Resources",
+    links:[
+      { title:"Articles", link: "/articles"},
+      { title:"Articles", link: "/articles"},
+      { title:"Articles", link: "/articles"},
+      { title:"Articles", link: "/articles"},
+      { title:"Articles", link: "/articles"},
+      { title:"Articles", link: "/articles"},
+      { title:"Articles", link: "/articles"},
+      { title:"Articles", link: "/articles"},
+    ]
+   },
+   {
+    title:"Support",
+    links:[
+      { title: "Help Center", link: "/help-center"},
+    ]
+   },
+   {
+    title:"Plans",
+    links:[
+      { title: "Paid Membership", link: "/paid-membership"},
+      { title: "Paid Membership", link: "/paid-membership"},
+      { title: "Paid Membership", link: "/paid-membership"},
+
+    ]
+   },
+   {
+    title:"Community",
+    links:[
+      { title: "Forums", link: "/forums"},
+      { title: "Forums", link: "/forums"},
+      { title: "Forums", link: "/forums"},
+    ]
+   },
+]
+
 export const FooterLink2 = [
   {
     title: "Subjects",
@@ -47,7 +94,6 @@ export const FooterLink2 = [
         {title: "Career services", link: "/career-services"},
         {title: "Interview prep", link: "/interview-prep"},
         {title: "Professional certification", link: "/professional-certification"},
-        {title: "-", link: "/hi"},
         {title: "Full Catalog", link: "/full-catalog"},
         {title: "Beta Content", link: "/beta-content"}
     ]
