@@ -1,9 +1,9 @@
 import React from 'react'
-import Nav from "../components/homepage/Nav"
+import Nav from "../components/common/Nav"
 import SectionA from "../components/homepage/SectionA"
 import SectionB from "../components/homepage/SectionB"
 import SectionC from "../components/homepage/SectionC"
-import Footer from "../components/homepage/Footer"
+import Footer from "../components/common/Footer"
 
 
 const Home = () => {
@@ -11,8 +11,6 @@ const Home = () => {
     <div>
        
        <Nav/>
-
-       <div className='h-0.5 bg-white'></div>
 
        <SectionA/>
 

@@ -38,7 +38,7 @@ const Skillsblock = () => {
         }
        </div>
 
-       <div className='flex w-11/12 gap-10 w-[30%]'>
+       <div className='flex gap-10 w-[30%]'>
         {
           courses.map((element,index)=>{
             return (

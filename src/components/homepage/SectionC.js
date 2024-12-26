@@ -3,6 +3,7 @@ import InstructorImage from "../../assets/Images/Instructor.png"
 import Highlight from '../common/Highlight'
 import Button from '../common/Button'
 import { FaArrowRightLong } from "react-icons/fa6";
+import Reviews from '../common/Reviews';
 
 const SectionC = () => {
   return (
@@ -20,21 +21,8 @@ const SectionC = () => {
         </div>
       </div>
 
-      <div><p>Reviews from other learners</p></div>
-
       <div>
-        <div>
-          <div><img src='' alt=''/></div>
-          <div>
-            <p></p>
-            <p></p>
-          </div>
-        </div>
-        <div><p></p></div>
-        <div>
-          <p></p>
-          <div></div>
-        </div>
+        <Reviews/>
       </div>
       
     </div>
