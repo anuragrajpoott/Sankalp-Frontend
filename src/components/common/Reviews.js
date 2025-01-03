@@ -7,7 +7,7 @@ const Reviews = () => {
             <div><p>Reviews from other learners</p></div>
 
             <div>
-                <div><img src='' alt='' /></div>
+                <div></div>
                 <div>
                     <p></p>
                     <p></p>

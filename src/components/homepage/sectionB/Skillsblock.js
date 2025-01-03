@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { HomePageExplore } from '../../../data/homepage-explore'
 import Highlight from '../../common/Highlight'
 
+
+
 const Tags = [
   "Free",
   "New to coding",
@@ -66,6 +68,11 @@ const Skillsblock = () => {
 }
 
 export default Skillsblock
+
+
+
+      
+
 
 
           

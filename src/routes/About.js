@@ -1,6 +1,4 @@
 import React from 'react'
-import Nav from '../components/common/Nav'
-import Footer from '../components/common/Footer'
 import Reviews from '../components/common/Reviews'
 import Highlight from '../components/common/Highlight'
 import AboutImages from '../components/about/AboutImages'
@@ -11,8 +9,6 @@ import InfoSection from '../components/about/InfoSection'
 const About = () => {
   return (
     <div className='flex flex-col gap-5'>
-      
-       <Nav/>
 
        <div><p>Driving Innovation in Online Education for a <Highlight>Brighter Future</Highlight></p></div>
 
@@ -29,8 +25,6 @@ const About = () => {
        <InfoSection/>
 
        <Reviews/>
-
-       <Footer/>
 
     </div>
   )
