@@ -3,6 +3,8 @@ import Image1 from "../../assets/Images/aboutus1.webp"
 import Image2 from "../../assets/Images/aboutus2.webp"
 import Image3 from "../../assets/Images/aboutus3.webp"
 
+
+
 const AboutImages = () => {
   return (
     <div className='flex'>

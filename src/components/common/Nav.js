@@ -69,7 +69,7 @@ const Nav = () => {
                 <Profile/>
 
             </div>) : (<div>
-
+                <Profile/>
             </div>)}
        </div>) : (<div className='flex  justify-evenly'>
         <Button active={false} linkTo="/login" text="Log In"/>

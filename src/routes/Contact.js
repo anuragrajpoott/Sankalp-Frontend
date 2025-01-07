@@ -4,7 +4,7 @@ import ContactForm from '../components/contact/ContactForm'
 
 const Contact = () => {
   return (
-    <div>
+    <div className='flex justify-around m-10'>
 
        <div><ContactBlock/></div>
     

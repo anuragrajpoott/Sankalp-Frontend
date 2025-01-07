@@ -1,3 +1,4 @@
+
 {
   "name": "frontend",
   "version": "0.1.0",
@@ -5,8 +6,10 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "axios": "^1.7.9",
+    "concurrently": "^9.1.2",
     "cra-template": "1.2.0",
     "dotenv": "^16.4.7",
+    "nodemon": "^3.1.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.1",
@@ -17,7 +20,7 @@
     "react-type-animation": "^3.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\"  \" cd ../backend && npm run dev\" ",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
