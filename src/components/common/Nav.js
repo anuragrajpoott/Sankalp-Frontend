@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+
 import Logo from "../../assets/Logo/Logo-Small-Light.png"
 import { IoIosArrowDown } from "react-icons/io";
 import Button from './Button';
@@ -7,8 +7,7 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FaCartShopping } from "react-icons/fa6";
 import Profile from './Profile';
-import { apiConnector } from '../../services/apiConnector';
-import { categories } from '../../services/apis';
+
 
 
 const Nav = () => {
@@ -17,18 +16,8 @@ const Nav = () => {
   const {user} = useSelector((state)=>state.user)
   const {totalItems} = useSelector((state)=>state.cart)
 
-  const [catelogLinks,setCatelogLinks] = useState([""])
 
-  useEffect(()=>{
-     try {
-        const res = apiConnector("GET",categories.CATEGORY_API)
-        setCatelogLinks(res.data.data)
-     } catch (error) {
-      console.log("error while fetching categories",error)
-      
-     }   
-
-  },[])
+  console.log(user)
 
 
   return (
@@ -51,7 +40,7 @@ const Nav = () => {
           </div>
           <div className='hidden group-hover:block'>
           <div className='absolute h-10 w-10 bg-white rotate-45 translate-x-12' ></div>
-          <div className='absolute h-40 w-40 bg-white translate-y-5'>{catelogLinks /* use map */}</div>
+          <div className='absolute h-40 w-40 bg-white translate-y-5'>python</div>
           </div>
         </div>
 
@@ -61,7 +50,7 @@ const Nav = () => {
 
       <div className='flex w-[15%] justify-evenly'>
        { token ? (<div className='flex  justify-evenly'>
-            { user.accountType !== "Instructor" ? (<div>
+            { user.accountType !== "Instructor" ? (<div className="flex">
                 <Link to={"/cart"} className='relative'>
                 <FaCartShopping />
                 <p>{totalItems}</p>

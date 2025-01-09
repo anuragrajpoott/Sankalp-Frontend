@@ -11,6 +11,7 @@ const LogIn = () => {
            <Form
               text={"Welcome Back"}
               button={"Log In"}
+              formType={"login"}
               >
                  Build skills for today, tomorrow, and beyond. <br></br>{<Highlight>Education to future-proof your career.</Highlight>}
               </Form>

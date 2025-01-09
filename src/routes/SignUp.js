@@ -4,19 +4,6 @@ import Form from '../components/common/Form'
 import Highlight from '../components/common/Highlight'
 
 
-//   const tabData = [
-//     {
-//       id: 1,
-//       tabName: "Student",
-//       type: ACCOUNT_TYPE.STUDENT,
-//     },
-//     {
-//       id: 2,
-//       tabName: "Instructor",
-//       type: ACCOUNT_TYPE.INSTRUCTOR,
-//     },
-//   ]
-
 const SignUp = () => {
 
 
@@ -28,9 +15,6 @@ const SignUp = () => {
       </div>
 
       <div>
-
-          {/* <Tab tabData={tabData} field={accountType} setField={setAccountType} /> */}
-
           <Form 
               text={"Join the millions learning to code with StudyNotion for free"}
               button={"Sign Up"}
