@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { sendResetPasswordLink } from '../services/operations/authApis'
+
 
 const ForgotPassword = () => {
+
+  const dispatch = useDispatch()
 
   const [emailSent, setEmailSent] = useState(false)
   const [formData,setFormData] = useState({
@@ -27,7 +32,7 @@ const ForgotPassword = () => {
 
     console.log(userData)
 
-    setEmailSent(true)
+    dispatch(sendResetPasswordLink(email,setEmailSent))
 
     setFormData({
       email:""

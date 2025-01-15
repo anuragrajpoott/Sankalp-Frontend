@@ -17,9 +17,6 @@ const Nav = () => {
   const {totalItems} = useSelector((state)=>state.cart)
 
 
-  console.log(user)
-
-
   return (
      <div>
         <div  className='flex items-center justify-between m-5'>
@@ -40,7 +37,7 @@ const Nav = () => {
           </div>
           <div className='hidden group-hover:block'>
           <div className='absolute h-10 w-10 bg-white rotate-45 translate-x-12' ></div>
-          <div className='absolute h-40 w-40 bg-white translate-y-5'>python</div>
+          <div className='absolute h-max w-max bg-white translate-y-5 text-black'><p>python</p><p>web devlopment</p></div>
           </div>
         </div>
 
@@ -50,14 +47,13 @@ const Nav = () => {
 
       <div className='flex w-[15%] justify-evenly'>
        { token ? (<div className='flex  justify-evenly'>
-            { user.accountType !== "Instructor" ? (<div className="flex">
-                <Link to={"/cart"} className='relative'>
+            { user?.accountType !== "Instructor" ? (<div className="flex gap-5">
+                <Link to={"/cart"} className='flex'>
                 <FaCartShopping />
-                <p>{totalItems}</p>
+                <p className="relative -translate-y-2.5">{totalItems}</p>
                 </Link>
                 <Profile/>
-
-            </div>) : (<div>
+           </div>) : (<div>
                 <Profile/>
             </div>)}
        </div>) : (<div className='flex  justify-evenly'>

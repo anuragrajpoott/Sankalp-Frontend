@@ -4,6 +4,9 @@ import { apiConnector } from "../apiConnector"
 import { authEndPoints } from "../apis"
 import { setToken } from "../../store/slices/authSlice"
 
+
+
+
 const {
   SENDOTP_API,
   SIGNUP_API,
@@ -12,10 +15,12 @@ const {
   RESETPASSWORD_API,
 } = authEndPoints
 
-export function sendOtp(email, navigate) {
-  return async () => {
+export function sendOtp(email, setLoading,navigate) {
+  return async (dispatch) => {
+    
     try {
-      const response = await apiConnector("POST",SENDOTP_API, {email})
+
+      const response = await apiConnector("POST", SENDOTP_API, { email })
       console.log("SENDOTP API RESPONSE............", response)
 
       console.log(response.data.success)
@@ -23,7 +28,7 @@ export function sendOtp(email, navigate) {
       if (!response.data.success) {
         throw new Error(response.data.message)
       }
-
+      
       toast.success("OTP Sent Successfully")
 
       navigate("/verify-email")
@@ -44,8 +49,8 @@ export function signUp(
   newOtp,
   navigate
 ) {
-  return async () => {
-
+  return async (dispatch) => {
+    
     try {
       const response = await apiConnector("POST", SIGNUP_API, {
         accountType,
@@ -63,6 +68,8 @@ export function signUp(
       }
       toast.success("Signup Successful")
 
+      
+
       navigate("/login")
 
     } catch (error) {
@@ -70,12 +77,13 @@ export function signUp(
       toast.error("Signup Failed")
       navigate("/signup")
     }
-
   }
 }
 
-export function logIn(email, password, navigate) {
+export function logIn(email, password,setLoading, navigate) {
+  
   return async (dispatch) => {
+    
     try {
       const response = await apiConnector("POST", LOGIN_API, {
         email,
@@ -92,29 +100,27 @@ export function logIn(email, password, navigate) {
 
       dispatch(setToken(response.data.token))
 
-      const userImage = response.data?.user?.image
-        ? response.data.user.image
-        : `https://api.dicebear.com/9.x/initials/svg?seed=${response.data.existingUser.firstName} ${response.data.existingUser.lastName}`
-      
-        dispatch(setUser({ ...response.data.existingUser, profileImage: userImage }))
+      const userImage = response.data?.user?.image ? response.data.user.image : `https://api.dicebear.com/9.x/initials/svg?seed=${response.data.existingUser.firstName}%${response.data.existingUser.lastName}`
 
-      
+      dispatch(setUser({ ...response.data.existingUser, profileImage: userImage }))
+
+
       localStorage.setItem("token", JSON.stringify(response.data.token))
+      localStorage.setItem("user", JSON.stringify(response.data.existingUser))
 
-      // navigate("/dashboard/my-profile")
-      navigate("/")
+      navigate("/dashboard")
 
     } catch (error) {
       console.log("LOGIN API ERROR............", error)
-      toast.error("Login Failed")
+      toast.error("Login Failed due to invalid credentials")
     }
-
+    setLoading(false)
   }
 }
 
 export function sendResetPasswordLink(email, setEmailSent) {
   return async (dispatch) => {
-
+    
     try {
       const response = await apiConnector("POST", SENDRESETPASSWORDLINK_API, {
         email,
@@ -136,13 +142,12 @@ export function sendResetPasswordLink(email, setEmailSent) {
   }
 }
 
-export function resetPassword(password, confirmPassword, token, navigate) {
-  return async (dispatch) => {
-
+export function resetPassword(password, token, setResetDone, navigate) {
+  return async () => {
+    
     try {
       const response = await apiConnector("POST", RESETPASSWORD_API, {
         password,
-        confirmPassword,
         token,
       })
 
@@ -153,6 +158,7 @@ export function resetPassword(password, confirmPassword, token, navigate) {
       }
 
       toast.success("Password Reset Successfully")
+      setResetDone(true)
 
       navigate("/login")
 
@@ -160,17 +166,21 @@ export function resetPassword(password, confirmPassword, token, navigate) {
       console.log("RESETPASSWORD ERROR............", error)
       toast.error("Failed To Reset Password")
     }
-
+    
   }
 }
 
 export function logOut(navigate) {
   return (dispatch) => {
+    
     dispatch(setToken(null))
     dispatch(setUser(null))
+
     localStorage.removeItem("token")
     localStorage.removeItem("user")
+
     toast.success("Logged Out")
+    
     navigate("/")
   }
 }

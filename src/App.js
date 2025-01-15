@@ -8,10 +8,15 @@ import LogIn from "./routes/LogIn";
 import SignUp from "./routes/SignUp";
 import ForgotPassword from "./routes/ForgotPassword";
 import VerifyEmail from "./routes/VerifyEmail";
+import ResetPassword from "./routes/ResetPassword";
+import Dashboard from "./routes/Dashboard";
+import Error from "./routes/Error";
 
 function App() {
   return (
     <div>
+
+      {/* add open and close routes respectively */}
 
        <Nav/>
 
@@ -19,10 +24,18 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<Contact/>}/>
+        
+        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/verify-email" element={<VerifyEmail/>}/>
+
         <Route path="/login" element={<LogIn/>}/>
         <Route path="/forgot-password" element={<ForgotPassword/>}/>
-        <Route path="/verify-email" element={<VerifyEmail/>}/>
-        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/forgot-password/:id" element={<ResetPassword/>}/>
+        
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        
+
+        <Route path="*" element={<Error/>}/>
        </Routes>
 
        <Footer/>

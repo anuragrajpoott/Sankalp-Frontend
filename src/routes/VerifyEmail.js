@@ -40,7 +40,7 @@ const VerifyEmail = () => {
       }
 
   return (
-    <div className='flex justify-center mt-20 mb-20 w-[100%] gap-5'>
+    <div className='flex flex-col justify-center mt-20 mb-20 w-[100%] gap-5'>
         <p> Verify Email</p>
         <p>`verification code had been sent to ${user.email}`</p>
       <form onSubmit={submitHandler} className='flex flex-col gap-5'>
@@ -61,7 +61,7 @@ const VerifyEmail = () => {
         </label>
         <button type='submit' className='bg-yellow-50 w-full'>Submit</button>
       </form>
-      <div><p>Back to Sign Up</p><button onClick={() => dispatch(sendOtp(user.email))}>Resend OTP</button></div>
+      <div className='flex w-full justify-between'><p>Back to Sign Up</p><button onClick={() => dispatch(sendOtp(user.email))}>Resend OTP</button></div>
     </div>
   )
 }
