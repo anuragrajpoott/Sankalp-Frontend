@@ -4,18 +4,15 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import { logIn, sendOtp } from "../../services/operations/authApis"
+import { contactUs, logIn, sendOtp } from "../../services/operations/authApis"
 import { setUser } from "../../store/slices/userSlice"
-import BeatLoader from "react-spinners/BeatLoader"
+
 
 
 
 
 const Form = ({ formType, button, children, text, }) => {
 
-  // const {loading} = useSelector((state)=>state.loading)
-
-  const [loading,setLoading] = useState(false)
   
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -55,7 +52,7 @@ const Form = ({ formType, button, children, text, }) => {
 
       dispatch(setUser(user))
 
-      dispatch(sendOtp(formData.email,setLoading,navigate))
+      dispatch(sendOtp(formData.email,navigate))
 
       setFormData({
         accountType: "",
@@ -80,7 +77,7 @@ const Form = ({ formType, button, children, text, }) => {
 
       console.log(user)
 
-      dispatch(logIn(formData.email,formData.password,setLoading,navigate))
+      dispatch(logIn(formData.email,formData.password,navigate))
 
       setFormData({
         accountType: "",
@@ -95,12 +92,15 @@ const Form = ({ formType, button, children, text, }) => {
     }
 
     if (button === "Send Message") {
-      const userData = {
-        email,
-        message
+      
+
+      const user = {
+        ...formData
       }
 
-      console.log(userData)
+      console.log(user)
+
+      dispatch(contactUs(formData.email,formData.message,navigate))
 
       setFormData({
         accountType: "",
@@ -115,11 +115,7 @@ const Form = ({ formType, button, children, text, }) => {
   }
 
 
-  return (<div>
-    {
-      loading ? (<div>
-        <BeatLoader/>
-      </div>) : (<div className='flex flex-col gap-5'>
+  return ( (<div className='flex flex-col gap-5'>
 
         <p>{text}</p>
   
@@ -217,14 +213,14 @@ const Form = ({ formType, button, children, text, }) => {
                   <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
                     message <sup className="text-pink-200">*</sup>
                   </p>
-                  <input
+                  <textarea
                     required
-                    type="text"
+                    rows="10"
                     name="message"
                     value={message}
                     onChange={changeHandler}
                     placeholder="Enter message"
-                    className="form-style w-full text-black"
+                    className="form-style w-full text-black row-"
                   />
                 </label>
               </div>) : (
@@ -253,8 +249,7 @@ const Form = ({ formType, button, children, text, }) => {
   
         </form>
       </div>)
-    }
-  </div>)
+   )
 
 }
 

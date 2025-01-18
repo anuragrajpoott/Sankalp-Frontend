@@ -13,9 +13,10 @@ const {
   LOGIN_API,
   SENDRESETPASSWORDLINK_API,
   RESETPASSWORD_API,
+  CONTACT_API,
 } = authEndPoints
 
-export function sendOtp(email, setLoading,navigate) {
+export function sendOtp(email, navigate) {
   return async (dispatch) => {
     
     try {
@@ -80,7 +81,7 @@ export function signUp(
   }
 }
 
-export function logIn(email, password,setLoading, navigate) {
+export function logIn(email, password, navigate) {
   
   return async (dispatch) => {
     
@@ -100,9 +101,7 @@ export function logIn(email, password,setLoading, navigate) {
 
       dispatch(setToken(response.data.token))
 
-      const userImage = response.data?.user?.image ? response.data.user.image : `https://api.dicebear.com/9.x/initials/svg?seed=${response.data.existingUser.firstName}%${response.data.existingUser.lastName}`
-
-      dispatch(setUser({ ...response.data.existingUser, profileImage: userImage }))
+      dispatch(setUser(response.data.existingUser))
 
 
       localStorage.setItem("token", JSON.stringify(response.data.token))
@@ -114,7 +113,7 @@ export function logIn(email, password,setLoading, navigate) {
       console.log("LOGIN API ERROR............", error)
       toast.error("Login Failed due to invalid credentials")
     }
-    setLoading(false)
+  
   }
 }
 
@@ -182,5 +181,31 @@ export function logOut(navigate) {
     toast.success("Logged Out")
     
     navigate("/")
+  }
+}
+
+
+export function contactUs(email, message,navigate) {
+  return async (dispatch) => {
+    
+    try {
+
+      const response = await apiConnector("POST", CONTACT_API, { email ,message})
+      console.log("Contact API RESPONSE............", response)
+
+      console.log(response.data.success)
+
+      if (!response.data.success) {
+        throw new Error(response.data.message)
+      }
+      
+      toast.success("connection successfull")
+
+      navigate("/contact")
+    } catch (error) {
+      console.log("contact API ERROR............", error)
+      toast.error("connection unsuccessfull")
+    }
+
   }
 }

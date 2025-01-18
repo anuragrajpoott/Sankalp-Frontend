@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { sendOtp } from '../services/operations/authApis'
 
+
 const VerifyEmail = () => {
 
     const navigate = useNavigate()
@@ -48,16 +49,26 @@ const VerifyEmail = () => {
               <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
                 One Time Password <sup className="text-pink-200">*</sup>
               </p>
-              <input
-                required
-                type="number"
-                name="newOtp"
-                value={newOtp}
-                step={1}
-                placeholder='enter otp...'
-                onChange={changeHandler}
-                className="form-style w-full text-black"
-              />
+          <input
+            required
+            type="number"
+            name="newOtp"
+            value={newOtp}
+            step={1}
+            placeholder='enter otp...'
+            onChange={changeHandler}
+            maxLength={6}
+            className="form-style w-full text-black"
+          />
+              {/* <OtpInput 
+                  required
+                  name="newOtp"
+                  value={newOtp}
+                  numInputs={6}
+                  renderSeparator={<span>-</span>}
+                  onChange={changeHandler}
+                  className="form-style w-full text-black"
+              /> */}
         </label>
         <button type='submit' className='bg-yellow-50 w-full'>Submit</button>
       </form>

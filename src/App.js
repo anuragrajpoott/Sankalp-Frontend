@@ -11,6 +11,9 @@ import VerifyEmail from "./routes/VerifyEmail";
 import ResetPassword from "./routes/ResetPassword";
 import Dashboard from "./routes/Dashboard";
 import Error from "./routes/Error";
+import Cart from "./routes/Cart";
+import Profile from "./routes/Profile";
+import EditProfile from "./routes/EditProfile";
 
 function App() {
   return (
@@ -33,6 +36,9 @@ function App() {
         <Route path="/forgot-password/:id" element={<ResetPassword/>}/>
         
         <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/dashboard/my-profile" element={<Profile/>}/>
+        <Route path="/dashboard/my-profile/edit-profile" element={<EditProfile/>}/>
+        <Route path="/dashboard/cart" element={<Cart/>}/>
         
 
         <Route path="*" element={<Error/>}/>
