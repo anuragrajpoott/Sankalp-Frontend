@@ -4,8 +4,8 @@ import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast} from 'react-hot-toast'
-import Button from '../components/common/Button'
-import {resetPassword} from "../services/operations/authApis"
+import Button from '../../components/common/Button'
+import {resetPassword} from "../../services/operations/authApis"
 
 const ResetPassword = () => {
 

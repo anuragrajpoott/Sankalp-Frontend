@@ -6,7 +6,7 @@ import { logOut } from '../../services/operations/authApis'
 import { useDispatch } from 'react-redux'
 
 
-const Sidebar = (active) => {
+const Sidebar = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -17,7 +17,7 @@ const Sidebar = (active) => {
 
             <div className='flex flex-col gap-2.5 items-center'>
                 <img src={user?.profileImage} alt={`profile-${user?.profileImage}`} className='h-40 w-40 mt-5'/>
-                <p>{`Hello ${user?.firtName}`}</p>
+                <p>{`Hello ${user?.firstName}`}</p>
             </div>
                
              <div>

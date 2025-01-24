@@ -1,7 +1,7 @@
 import React from 'react'
-import signupImage from "../assets/Images/signup.webp"
-import Form from '../components/common/Form'
-import Highlight from '../components/common/Highlight'
+import signupImage from "../../assets/Images/signup.webp"
+import Form from '../../components/common/Form'
+import Highlight from '../../components/common/Highlight'
 
 
 const SignUp = () => {

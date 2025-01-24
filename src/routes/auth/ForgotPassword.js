@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { sendResetPasswordLink } from '../services/operations/authApis'
+import { sendResetPasswordLink } from '../../services/operations/authApis'
 
 
 const ForgotPassword = () => {

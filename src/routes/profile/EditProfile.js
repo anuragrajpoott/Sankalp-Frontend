@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import AdditionalDetails from '../components/profile/AdditionalDetails'
-import ChangePassword from '../components/profile/ChangePassword'
+import AdditionalDetails from '../../components/profile/AdditionalDetails'
+import ChangePassword from '../../components/profile/ChangePassword'
 import { MdDeleteForever } from "react-icons/md";
-import { deleteProfile, updateDisplayPicture } from '../services/operations/profileApis';
-import { useEffect } from 'react';
+import { deleteProfile, updateDisplayPicture } from '../../services/operations/profileApis';
 import {useNavigate} from 'react-router-dom'
 
 
@@ -16,7 +15,6 @@ const EditProfile = () => {
     const navigate = useNavigate()
   
     const [profileImage, setProfileImage] = useState(null)
-    const [previewSource, setPreviewSource] = useState(null)
 
   
     const changeHandler = (e) => {
@@ -24,17 +22,9 @@ const EditProfile = () => {
       console.log(file)
       if (file) {
         setProfileImage(file)
-        previewFile(file)
       }
     }
-  
-    const previewFile = (file) => {
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
-      reader.onloadend = () => {
-        setPreviewSource(reader.result)
-      }
-    }
+
   
     const submitHandler = () => {
       try {
@@ -48,12 +38,7 @@ const EditProfile = () => {
         console.log("ERROR MESSAGE - ", error.message)
       }
     }
-  
-    useEffect(() => {
-      if (profileImage) {
-        previewFile(profileImage)
-      }
-    }, [profileImage])
+
 
   return (
     <div className='flex flex-col items-center min-h-screen  m-10 gap-10 w-full'>

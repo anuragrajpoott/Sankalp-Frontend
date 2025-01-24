@@ -1,7 +1,7 @@
 import React from 'react'
-import Form from "../components/common/Form"
-import loginImage from "../assets/Images/login.webp"
-import Highlight from '../components/common/Highlight'
+import Form from "../../components/common/Form"
+import loginImage from "../../assets/Images/login.webp"
+import Highlight from '../../components/common/Highlight'
 
 const LogIn = () => {
   return (

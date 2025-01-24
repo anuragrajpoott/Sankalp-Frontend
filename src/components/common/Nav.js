@@ -4,14 +4,14 @@ import { IoIosArrowDown } from "react-icons/io";
 import Button from './Button';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import {  useSelector } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import { FaCartShopping } from "react-icons/fa6";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { apiConnector } from "../../services/apiConnector";
 import { categoryEndPoints } from "../../services/apis";
 import { MdMenu } from "react-icons/md";
 import Sidebar from "./Sidebar";
-
+import { setCategory } from "../../store/slices/categorySlice";
 
 
 
@@ -22,18 +22,20 @@ import Sidebar from "./Sidebar";
 
 const Nav = () => {
 
-  const [categories, setCategories] = useState([])
-
   const { token } = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.user)
   const { totalItems } = useSelector((state) => state.cart)
+
+  const {category} = useSelector((state)=>state.category)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     (async () => {
 
       try {
         const res = await apiConnector("GET", categoryEndPoints.SHOWCATEGORY_API)
-        setCategories(res.data.allCategory)
+        dispatch(setCategory(res.data.allCategory))
       } catch (error) {
         console.log("Could not fetch Categories.", error)
       }
@@ -61,13 +63,13 @@ const Nav = () => {
             </div>
             <div className='hidden group-hover:block'>
               <div className='absolute h-5 w-5 bg-white rotate-45 translate-x-20' ></div>
-              <div className='absolute h-max w-40 bg-white translate-y-2.5 text-black rounded-sm'>
+              <div className='flex flex-col absolute h-max w-40 bg-white translate-y-2.5 text-black rounded-sm p-2.5 '>
                 {
-                  categories.map((element, index) => (
+                  category.map((element, index) => (
                     <Link to={`/category/${element.name
                       .split(" ")
                       .join("-")
-                      .toLowerCase()}`}>
+                      .toLowerCase()}`} key={index}>
                       <div key={index}>
                         {element.name}
                       </div></Link>
@@ -93,10 +95,12 @@ const Nav = () => {
              <div className="group-hover:block"><MdMenu /></div> 
               <div className="hidden group-hover:block"><Sidebar /></div>
               </div>
-            </div>) : (<div>
+            </div>) : (<div className="flex gap-5">
               <img className='h-5 w-5 rounded-full' src={user?.profileImage} alt={`profile-${user?.firstName}`} />
-              <MdMenu />
-              <Sidebar />
+              <div className="group">
+             <div className="group-hover:block"><MdMenu /></div> 
+              <div className="hidden group-hover:block"><Sidebar /></div>
+              </div>
             </div>)}
           </div>) : (<div className='flex  justify-evenly'>
             <Button active={false} linkTo="/login" text="Log In" />

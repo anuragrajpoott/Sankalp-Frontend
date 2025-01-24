@@ -10,7 +10,7 @@ export const instructorSidebar = [
   {
     id: 2,
     name: "Dashboard",
-    path: "/dashboard/instructor",
+    path: "/dashboard",
     type: "Instructor",
     icon: "VscDashboard",
   },
@@ -24,14 +24,14 @@ export const instructorSidebar = [
   {
     id: 4,
     name: "Add Course",
-    path: "/dashboard/add-course",
+    path: "/dashboard/my-course/create-course",
     type: "Instructor",
     icon: "VscAdd",
   },
   {
     id: 5,
     name: "Settings",
-    path: "/dashboard/settings",
+    path: "/dashboard/my-profile/edit-profile",
     icon: "VscAccount",
   },
   
@@ -63,7 +63,7 @@ export const studentSidebar = [
   {
     id: 5,
     name: "Settings",
-    path: "/dashboard/settings",
+    path: "/dashboard/my-profile/edit-profile",
     icon: "VscAccount",
   }
 ]

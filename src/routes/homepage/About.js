@@ -1,9 +1,9 @@
 import React from 'react'
-import Reviews from '../components/common/Reviews'
-import Highlight from '../components/common/Highlight'
-import AboutImages from '../components/about/AboutImages'
-import SVM from '../components/about/SVM'
-import InfoSection from '../components/about/InfoSection'
+import Reviews from '../../components/common/Reviews'
+import Highlight from '../../components/common/Highlight'
+import AboutImages from '../../components/about/AboutImages'
+import SVM from '../../components/about/SVM'
+import InfoSection from '../../components/about/InfoSection'
 
 
 const About = () => {

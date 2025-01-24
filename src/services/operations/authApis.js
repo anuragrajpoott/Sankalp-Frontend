@@ -3,6 +3,7 @@ import { setUser } from "../../store/slices/userSlice"
 import { apiConnector } from "../apiConnector"
 import { authEndPoints } from "../apis"
 import { setToken } from "../../store/slices/authSlice"
+import {setLoading} from "../../store/slices/loadingSlice"
 
 
 
@@ -18,7 +19,7 @@ const {
 
 export function sendOtp(email, navigate) {
   return async (dispatch) => {
-    
+    dispatch(setLoading(true))
     try {
 
       const response = await apiConnector("POST", SENDOTP_API, { email })
@@ -37,7 +38,7 @@ export function sendOtp(email, navigate) {
       console.log("SENDOTP API ERROR............", error)
       toast.error("Could Not Send OTP")
     }
-
+    dispatch(setLoading(false))
   }
 }
 
@@ -51,7 +52,7 @@ export function signUp(
   navigate
 ) {
   return async (dispatch) => {
-    
+    dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", SIGNUP_API, {
         accountType,
@@ -78,12 +79,15 @@ export function signUp(
       toast.error("Signup Failed")
       navigate("/signup")
     }
+    dispatch(setLoading(false))
   }
 }
 
 export function logIn(email, password, navigate) {
   
   return async (dispatch) => {
+
+    dispatch(setLoading(true))
     
     try {
       const response = await apiConnector("POST", LOGIN_API, {
@@ -113,13 +117,13 @@ export function logIn(email, password, navigate) {
       console.log("LOGIN API ERROR............", error)
       toast.error("Login Failed due to invalid credentials")
     }
-  
+    dispatch(setLoading(false))
   }
 }
 
 export function sendResetPasswordLink(email, setEmailSent) {
   return async (dispatch) => {
-    
+    dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", SENDRESETPASSWORDLINK_API, {
         email,
@@ -137,13 +141,13 @@ export function sendResetPasswordLink(email, setEmailSent) {
       console.log("RESETPASSTOKEN ERROR............", error)
       toast.error("Failed To Send Reset Email")
     }
-    
+    dispatch(setLoading(false))
   }
 }
 
 export function resetPassword(password, token, setResetDone, navigate) {
-  return async () => {
-    
+  return async (dispatch) => {
+    dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", RESETPASSWORD_API, {
         password,
@@ -165,7 +169,7 @@ export function resetPassword(password, token, setResetDone, navigate) {
       console.log("RESETPASSWORD ERROR............", error)
       toast.error("Failed To Reset Password")
     }
-    
+    dispatch(setLoading(false))
   }
 }
 
@@ -187,6 +191,8 @@ export function logOut(navigate) {
 
 export function contactUs(email, message,navigate) {
   return async (dispatch) => {
+
+    dispatch(setLoading(true))
     
     try {
 
@@ -206,6 +212,6 @@ export function contactUs(email, message,navigate) {
       console.log("contact API ERROR............", error)
       toast.error("connection unsuccessfull")
     }
-
+    dispatch(setLoading(false))
   }
 }

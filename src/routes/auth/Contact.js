@@ -1,6 +1,6 @@
 import React from 'react'
-import ContactBlock from '../components/contact/ContactBlock'
-import ContactForm from '../components/contact/ContactForm'
+import ContactBlock from '../../components/contact/ContactBlock'
+import ContactForm from '../../components/contact/ContactForm'
 
 const Contact = () => {
   return (

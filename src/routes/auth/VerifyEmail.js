@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { signUp } from '../services/operations/authApis'
+import { signUp } from '../../services/operations/authApis'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { sendOtp } from '../services/operations/authApis'
+import { sendOtp } from '../../services/operations/authApis'
 
 
 const VerifyEmail = () => {
