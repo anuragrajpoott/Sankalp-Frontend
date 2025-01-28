@@ -4,7 +4,8 @@ const initialState = {
     courseData :  [],
     courseImage : null,
     myCourses : [],
-    enrolledCourses : []
+    enrolledCourses : [],
+    sectionData:[]
 }
 
 const courseSlice = createSlice({
@@ -22,10 +23,13 @@ const courseSlice = createSlice({
        },
        setEnrolledCourses(state,value){
            state.enrolledCourses=value.payload
+       },
+       setSectionData(state,value){
+            state.sectionData=value.payload
        }
     }
 
 })
 
-export const {setMyCourses, setEnrolledCourses,setCourseImage,setCourseData} = courseSlice.actions;
+export const {setSectionData,setMyCourses, setEnrolledCourses,setCourseImage,setCourseData} = courseSlice.actions;
 export default courseSlice.reducer 

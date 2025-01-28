@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { setStep } from '../../store/slices/stepSlice'
+// import { setStep } from '../../store/slices/stepSlice'
 import { useState } from 'react'
-import { setCourseData,setCourseImage } from '../../store/slices/courseSlice'
+// import { setCourseData,setCourseImage } from '../../store/slices/courseSlice'
 import { setCategory } from '../../store/slices/categorySlice'
 import { useEffect } from 'react'
 import { apiConnector } from '../../services/apiConnector'
@@ -30,7 +30,7 @@ const CCS1 = () => {
        courseRequirements:""
     })
 
-    const [courseThumbnail,setCourseThumbnail] = useState(null)
+    const [thumbnailImage,setThumbnailImage] = useState(null)
   
     const { courseName,courseDescription,coursePrice,courseCategory,whatWillYouLearn,courseRequirements } = formData
   
@@ -45,30 +45,37 @@ const CCS1 = () => {
     const imageHandler = (e) => {
         const file = e.target.files[0]
         if(file){
-          setCourseThumbnail(file)
+          setThumbnailImage(file)
         }
     }
     
     const submitHandler = (e) => {
       e.preventDefault()
 
-        console.log(courseThumbnail)
-        console.log(formData)
-        console.log(requirementList)
+        // console.log(courseThumbnail)
+        // console.log(formData)
+        // console.log(requirementList)
         
-        dispatch(setStep(2))
-        dispatch(setCourseData([formData,requirementList]))
-        dispatch(setCourseImage(courseThumbnail))
+        // dispatch(setStep(2))
+        // dispatch(setCourseData([formData,requirementList]))
+        // dispatch(setCourseImage(courseThumbnail))
 
-        const data = new FormData()
+        // dispatch(addCourseDetails({formData,thumbnailImage},token))
 
-        data.append("courseData",formData)
-        data.append("requirementList",requirementList)
-        data.append("courseThumbnail",courseThumbnail)
+         try {
+        
+        const courseData = new FormData()
+        courseData.append("thumbnailImage", thumbnailImage)
+        courseData.append("courseName",formData.courseName)
+        courseData.append("courseDescription",formData.courseDescription)
+        courseData.append("coursePrice",formData.coursePrice)
+        courseData.append("whatWillYouLearn",formData.whatWillYouLearn)
 
-        console.log(data)
+        dispatch(addCourseDetails(courseData,token))
 
-        dispatch(addCourseDetails(token,data))
+      } catch (error) {
+        console.log("ERROR MESSAGE - ", error.message)
+      }
         
   
       }

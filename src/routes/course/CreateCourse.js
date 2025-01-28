@@ -29,7 +29,7 @@ const CreateCourse = () => {
           step === 2 && <div><CCS2/></div>
          }
          {
-          step === 2 && <div><CCS3/></div>
+          step === 3 && <div><CCS3/></div>
          }
         </div>
       

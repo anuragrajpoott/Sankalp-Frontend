@@ -24,12 +24,13 @@ export const profileEndPoints = {
 
 
 export const courseEndPoints = {
+  PUBLISH_COURSE_API : BASE_URL + "/course/publishCourse",
   GET_ALL_COURSE_API: BASE_URL + "/course/showAllCourses",
   COURSE_DETAILS_API: BASE_URL + "/course/getCourseDetails",
   EDIT_COURSE_API: BASE_URL + "/course/editCourse",
   CREATE_COURSE_API: BASE_URL + "/course/createCourse",
-  CREATE_SECTION_API: BASE_URL + "/course/addSection",
-  CREATE_SUBSECTION_API: BASE_URL + "/course/addSubSection",
+  CREATE_SECTION_API: BASE_URL + "/section/createSection",
+  CREATE_SUBSECTION_API: BASE_URL + "/subSection/createSubSection",
   UPDATE_SECTION_API: BASE_URL + "/course/updateSection",
   UPDATE_SUBSECTION_API: BASE_URL + "/course/updateSubSection",
   GET_USER_ENROLLED_COURSES_API: BASE_URL + "/course/getEnrolledCourses",
